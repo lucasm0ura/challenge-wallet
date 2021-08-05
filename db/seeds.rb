@@ -13,5 +13,8 @@ password = Rails.env.production? ? ENV['ADMIN_PASSWORD'] : "12345678"
 
 @user = User.find_by(email: email)
 if @user.nil?
-   User.create(:name => 'Super User', :uid => uid, :email => email, :password => password, :password_confirmation => password, :role_id => 1, :confirmed_at => Time.now)
+   user = User.create(:name => 'Super User', :uid => uid, :email => email, :password => password, :password_confirmation => password, :role_id => 1, :confirmed_at => Time.now)
+   wallet = Wallet.create(:user_id => user.id, :current_balance => 0.0)
+   user.wallet_id = wallet.id
+   user.save
 end

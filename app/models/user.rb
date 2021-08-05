@@ -7,6 +7,7 @@ class User < ApplicationRecord
   include DeviseTokenAuth::Concerns::User
 
   belongs_to :role
+  belongs_to :wallet
 
   validates_presence_of :name, :role_id
   validates_uniqueness_of :uid, scope: :provider

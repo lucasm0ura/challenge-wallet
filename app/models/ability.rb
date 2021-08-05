@@ -7,7 +7,6 @@ class Ability
       if user.role?(:administrator)
         can :manage, :all
       end 
-  
     end
   end
   
