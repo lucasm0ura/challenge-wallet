@@ -3,10 +3,37 @@
 ## Requirements
 
 - Ruby 3.0.0
-- PostgreSQL 11 or upper
-- Postman or similar
+- PostgreSQL 11 or upper / Docker container
+- Postman or similar (I use Insomnia)
 
 ## Steps
+
+To prepare Docker (If you choose this way)
+On terminal after you installed Docker in your computer
+
+First, Install Postgres and pgadmin container in Docker CLI
+- PostgreSQL
+```
+$ docker pull postgres
+```
+- pgAdmin4
+```
+$ docker pull dpage/pgadmin4
+```
+- PostgreSQL Run Container
+```
+$ docker run -p 5432:5432 --name postgreSQL -e POSTGRES_PASSWORD=postgres -d postgres
+```
+- pgAdmin Run Container (Put email and password to signin plataform to see databases and configure)
+```
+$ docker run -p 5050:80 -e "PGADMIN_DEFAULT_EMAIL=PUT_YOUR_EMAIL" -e "PGADMIN_DEFAULT_PASSWORD=PUT_YOUR_PASSWORD" -d  dpage/pgadmin4
+```
+PS: You can access the pgadmin4 via this link: http://localhost:5050/
+
+To configure is pretty simple:
+- Create a Server
+- Put a name in General
+- Host name/address: host.docker.internal and default port: 5432 with username that you started your docker postgres container ( in the example before was postgres)
 
 To generate database and tables:
 
@@ -74,4 +101,29 @@ Json to create a User
         "role_id": ID_ROLE ( 1 - ADMINISTRATOR, 2 - USER)
     }
 }
+```
+
+
+ADD MONEY TO WALLET
+```
+http://localhost:3000/api/v1/users/USER_ID/wallet/WALLET_ID/add
+
+```
+
+REMOVE MONEY TO WALLET
+```
+http://localhost:3000/api/v1/users/USER_ID/wallet/WALLET_ID/remove
+
+```
+Json to send or remove money to wallet
+```
+{
+	"value": 750.0
+}
+```
+
+VERIFY HISTORY INPUT AND OUTPUT TO WALLET ( ordered by date and time)
+```
+http://localhost:3000/api/v1/users/USER_ID/wallet/WALLET_ID/index
+
 ```

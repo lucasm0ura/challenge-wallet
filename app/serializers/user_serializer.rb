@@ -1,10 +1,8 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :name, :email, :created_at, :wallet
+  attributes :name, :email, :wallet
 
 
   def wallet
-    {current_balance: self.object.wallet.current_balance,
-      created_at: self.object.wallet.created_at
-    }
+    { current_balance: self.object.wallet.current_balance }
   end
 end

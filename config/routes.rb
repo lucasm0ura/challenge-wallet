@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       resources :users do
         post 'wallet/:wallet_id/add', to: 'wallets#add'
         post 'wallet/:wallet_id/remove', to: 'wallets#remove'
+        get 'wallet/:wallet_id/index', to: 'wallets#index'
       end      
     end
   end

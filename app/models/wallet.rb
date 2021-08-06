@@ -1,6 +1,6 @@
 class Wallet < ApplicationRecord
     has_and_belongs_to_many :users, :join_table => :wallets_users
-    belongs_to :wallet_history
+    has_many :wallet_histories
 
     CREDIT = 'CREDIT'
     DEBIT = 'DEBIT'
