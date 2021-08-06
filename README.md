@@ -127,3 +127,14 @@ VERIFY HISTORY INPUT AND OUTPUT TO WALLET ( ordered by date and time)
 http://localhost:3000/api/v1/users/USER_ID/wallet/WALLET_ID/index
 
 ```
+
+VERIFY HISTORY INPUT AND OUTPUT TO WALLET ( FILTER VIA PERIOD)
+```
+http://localhost:3000/api/v1/users/USER_ID/wallet/WALLET_ID/period
+
+{
+	"initial_date": "2021/08/01",
+	"end_date": "2021/08/30"
+}
+
+```

@@ -27,4 +27,10 @@ class Wallet < ApplicationRecord
             false
         end
     end
+
+    def self.period(initial_date, end_date)
+        initial_date = initial_date.to_date.at_beginning_of_day
+        end_date = end_date.to_date.at_end_of_day
+        WalletHistory.where(created_at: initial_date..end_date)
+    end
 end

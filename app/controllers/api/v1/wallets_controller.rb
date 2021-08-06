@@ -1,10 +1,16 @@
 module Api
     module V1
         class WalletsController < Api::V1::ApplicationController
+            before_action :authenticate_api_user!
             before_action :set_wallet, only: %i[ index ]
 
             def index
                 render json: @wallet, status: :ok                
+            end
+
+            def wallet_history_period
+                wallet_histories = Wallet.period(params[:initial_date], params[:end_date])
+                render json: wallet_histories, status: :ok    
             end
 
             def add

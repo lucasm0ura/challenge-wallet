@@ -9,6 +9,7 @@ Rails.application.routes.draw do
         post 'wallet/:wallet_id/add', to: 'wallets#add'
         post 'wallet/:wallet_id/remove', to: 'wallets#remove'
         get 'wallet/:wallet_id/index', to: 'wallets#index'
+        post 'wallet/:wallet_id/period', to: 'wallets#wallet_history_period'
       end      
     end
   end
