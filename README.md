@@ -40,6 +40,7 @@ To generate database and tables:
 ```
 $ bin/setup
 ```
+PS: The email and password you can find in seed file in folder db  on project ( this data will generated itselves via bin/setup configuration)
 
 To start the server - Port 3000:
 
